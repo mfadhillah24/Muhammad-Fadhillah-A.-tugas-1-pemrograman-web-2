@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggota;
 use Illuminate\Http\Request;
 
-class DataAnggota extends Controller
+class AnggotaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -48,38 +49,37 @@ class DataAnggota extends Controller
 
         
         return redirect()->route('index')->withSuccess('Data anggota berhasil disimpan!');
-    }
     
+    }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Anggota $anggota)
     {
-        
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Anggota $anggota)
     {
-        
+        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Anggota $anggota)
     {
         //
-        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Anggota $anggota)
     {
         //
     }
