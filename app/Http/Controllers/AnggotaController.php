@@ -14,7 +14,6 @@ class AnggotaController extends Controller
     {
         return view('index' ,
         [
-            
             'anggota' => Anggota::all()
         ]);
 
@@ -39,7 +38,7 @@ class AnggotaController extends Controller
             'status' => 'required|string|max:50',
             'nama_unix' => 'required|string|max:50',
             'alamat' => 'required|string|max:255',
-            'no_telp' => 'required|digits:20|numeric',
+            'no_telp' => 'required|string|max:20',
         ],
         [
             'nama.required' => 'Nama anggota harus diisi.',
@@ -51,6 +50,8 @@ class AnggotaController extends Controller
             'no_telp.numeric' => 'Nomor Telepon harus berupa angka.',
             'no_telp.max' => 'Nomor Telepon tidak boleh lebih dari 20 karakter.',
         ]);
+
+        Anggota::create($validate);
 
         
         return redirect()->route('index')->withSuccess('Data anggota berhasil disimpan!');
