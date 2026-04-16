@@ -32,18 +32,27 @@
                             <th>Nomor Telepon</th>
                             <th>Aksi</th>
                     </thead>
+                    <tbody>
+                        @foreach ($anggota as $Anggota)
                     <tr class="text-center">
-                        <td>1</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
+                        
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $Anggota->nama }}</td>
+                        <td>{{ $Anggota->nia }}</td>
+                        <td>{{ $Anggota->status }}</td>
+                        <td>{{ $Anggota->nama_unix }}</td>
+                        <td>{{ $Anggota->alamat }}</td>
+                        <td>{{ $Anggota->no_telp }}</td>
                         <td>
+                            <div class="d-flex justify-content-center gap-2">
                             <a href="#" class="btn btn-sm btn-warning">Edit</a>
                             <a href="#" class="btn btn-sm btn-danger">Hapus</a>
-                        </td>
+                            </div>
+                        </td>    
+                    </tr>
+                        @endforeach
+                    
+                        
                 </table>
             </div>
         </div>
