@@ -1,5 +1,7 @@
 <x-tampilan>
     <x-slot:title>Cyber Open Source</x-slot>
+    
+
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mt-4">
@@ -17,6 +19,11 @@
                 <a href="{{ route('create') }}" class="btn btn-primary">+ Tambah Data</a>
             </div>
         </div>
+        @session('success')
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endsession
 
         <div class="card shadow-sm">
             <div class="card-body">
@@ -33,19 +40,19 @@
                             <th>Aksi</th>
                     </thead>
                     <tbody>
-                        @foreach ($anggota as $Anggota)
+                        @foreach ($anggota as $item)
                     <tr class="text-center">
                         
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $Anggota->nama }}</td>
-                        <td>{{ $Anggota->nia }}</td>
-                        <td>{{ $Anggota->status }}</td>
-                        <td>{{ $Anggota->nama_unix }}</td>
-                        <td>{{ $Anggota->alamat }}</td>
-                        <td>{{ $Anggota->no_telp }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->nia }}</td>
+                        <td>{{ $item->status }}</td>
+                        <td>{{ $item->nama_unix }}</td>
+                        <td>{{ $item->alamat }}</td>
+                        <td>{{ $item->no_telp }}</td>
                         <td>
                             <div class="d-flex justify-content-center gap-2">
-                            <a href="#" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{{ route('edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             <a href="#" class="btn btn-sm btn-danger">Hapus</a>
                             </div>
                         </td>    

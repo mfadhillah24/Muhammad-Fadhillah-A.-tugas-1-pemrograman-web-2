@@ -34,7 +34,7 @@ class AnggotaController extends Controller
     {
         $validate = $request->validate([
             'nama' => 'required|string|max:255',
-            'nia' => 'required|string|max:20',
+            'nia' => 'required|string|max:50',
             'status' => 'required|string|max:50',
             'nama_unix' => 'required|string|max:50',
             'alamat' => 'required|string|max:255',
@@ -71,7 +71,11 @@ class AnggotaController extends Controller
      */
     public function edit(Anggota $anggota)
     {
-        //
+         return view('edit',
+        [
+            'anggota' => $anggota
+        ]);
+
     }
 
     /**
@@ -79,7 +83,30 @@ class AnggotaController extends Controller
      */
     public function update(Request $request, Anggota $anggota)
     {
-        //
+      
+        $validate = $request->validate([
+            'nama' => 'required|string|max:255',
+            'nia' => 'required|string|max:50',
+            'status' => 'required|string|max:50',
+            'nama_unix' => 'required|string|max:50',
+            'alamat' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:20',
+        ],
+        [
+            'nama.required' => 'Nama anggota harus diisi.',
+            'nia.required' => 'Nomor Induk Anggota harus diisi.',
+            'status.required' => 'Status anggota harus diisi.',
+            'nama_unix.required' => 'Nama Unix harus diisi.',
+            'alamat.required' => 'Alamat harus diisi.',
+            'no_telp.required' => 'Nomor Telepon harus diisi.',
+            'no_telp.numeric' => 'Nomor Telepon harus berupa angka.',
+            'no_telp.max' => 'Nomor Telepon tidak boleh lebih dari 20 karakter.',
+        ]);
+
+        $anggota->update($validate);
+
+        return to_route('index')->withSuccess('Data anggota berhasil di edit!');
+    
     }
 
     /**
