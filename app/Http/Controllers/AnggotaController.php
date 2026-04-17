@@ -114,6 +114,8 @@ class AnggotaController extends Controller
      */
     public function destroy(Anggota $anggota)
     {
-        //
+        $anggota->delete($anggota);
+
+        return to_route('index')->withSuccess('Data anggota berhasil di hapus!');
     }
 }
