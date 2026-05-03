@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\Divisi;
 use Illuminate\Http\Request;
 
 class AnggotaController extends Controller
@@ -14,7 +15,9 @@ class AnggotaController extends Controller
     {
         return view('index' ,
         [
-            'anggota' => Anggota::all()
+            'anggota' => Anggota::all(),
+            
+
         ]);
 
     }
@@ -24,7 +27,9 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('create', [
+            'divisis' => Divisi::all(),
+        ]);
     }
 
     /**
@@ -39,6 +44,7 @@ class AnggotaController extends Controller
             'nama_unix' => 'required|string|max:50',
             'alamat' => 'required|string|max:255',
             'no_telp' => 'required|string|max:20',
+            'divisi_id' => 'required|exists:divisis,id',
         ],
         [
             'nama.required' => 'Nama anggota harus diisi.',
@@ -49,6 +55,7 @@ class AnggotaController extends Controller
             'no_telp.required' => 'Nomor Telepon harus diisi.',
             'no_telp.numeric' => 'Nomor Telepon harus berupa angka.',
             'no_telp.max' => 'Nomor Telepon tidak boleh lebih dari 20 karakter.',
+            'divisi_id.required' => 'Divisi harus dipilih.',
         ]);
 
         Anggota::create($validate);
@@ -73,7 +80,8 @@ class AnggotaController extends Controller
     {
          return view('edit',
         [
-            'anggota' => $anggota
+            'anggota' => $anggota,
+            'divisis' => Divisi::all(),
         ]);
 
     }
@@ -91,6 +99,7 @@ class AnggotaController extends Controller
             'nama_unix' => 'required|string|max:50',
             'alamat' => 'required|string|max:255',
             'no_telp' => 'required|string|max:20',
+
         ],
         [
             'nama.required' => 'Nama anggota harus diisi.',
@@ -101,6 +110,7 @@ class AnggotaController extends Controller
             'no_telp.required' => 'Nomor Telepon harus diisi.',
             'no_telp.numeric' => 'Nomor Telepon harus berupa angka.',
             'no_telp.max' => 'Nomor Telepon tidak boleh lebih dari 20 karakter.',
+        
         ]);
 
         $anggota->update($validate);

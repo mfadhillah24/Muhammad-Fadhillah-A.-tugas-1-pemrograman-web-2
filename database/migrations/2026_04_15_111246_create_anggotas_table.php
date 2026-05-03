@@ -24,8 +24,7 @@ return new class extends Migration
             $table->string('nama_unix');
             $table->string('alamat');
             $table->string('no_telp');
-            
-            
+            $table->foreignId('divisi_id')->constrained('divisis')->onDelete('cascade');
             $table->timestamps();
         });
     }

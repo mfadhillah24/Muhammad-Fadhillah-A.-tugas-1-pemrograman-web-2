@@ -56,6 +56,21 @@
                         </div>
                 @enderror
                 </div>
+
+                <div class="mb-3">
+                    <label for="divisi_id" class="form-label">Divisi</label>
+                    <select class="form-select @error('divisi_id') is-invalid @enderror" id="divisi_id" name="divisi_id">
+                        <option value="">Pilih Divisi</option>
+                        @foreach ($divisis as $divisi)
+                            <option value="{{ $divisi->id }}" {{ old('divisi_id') == $divisi->id ? 'selected' : '' }}>{{ $divisi->nama_divisi }}</option>
+                        @endforeach
+                    </select>
+                    @error('divisi_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        
+                    @enderror
                 
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>

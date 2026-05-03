@@ -59,6 +59,7 @@
                 @enderror
                 </div>
                 
+
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
                     <input type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" value="{{ old('alamat' , $anggota->alamat) }}">
@@ -66,6 +67,8 @@
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
+
+                
                         
                     @enderror  
                 </div>

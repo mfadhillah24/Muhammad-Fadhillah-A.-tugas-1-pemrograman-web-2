@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Anggota;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Divisi;
 
 /**
  * @extends Factory<Anggota>
@@ -24,6 +25,8 @@ class AnggotaFactory extends Factory
             'nama_unix' => fake()->userName(),
             'alamat' => fake()->address(),
             'no_telp' => fake()->phoneNumber(),
+
+            'divisi_id' => Divisi::inRandomOrder()->value('id'),
         ];
     }
 }
