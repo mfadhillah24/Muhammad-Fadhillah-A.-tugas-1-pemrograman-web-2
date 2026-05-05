@@ -6,6 +6,11 @@
     <div class="container mt-5">
         <h1>Daftar Divisi</h1>
         <a href="{{ route('divisi.create') }}" class="btn btn-primary mb-3">Tambah Divisi</a>
+         @session('success')
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endsession
         <table class="table table-bordered table-hover align-middle text-center text-white border-dark bg-opacity-75">
             <thead class="table-primary text-center">
                 <tr>
@@ -19,7 +24,7 @@
             <tbody>
                 @foreach ($divisis as $divisi)
                     <tr>
-                        <td>{{ $divisi->id }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $divisi->nama_divisi }}</td>
                         <td>{{ $divisi->deskripsi }}</td>
                         <td>{{ $divisi->ketua_divisi }}</td>

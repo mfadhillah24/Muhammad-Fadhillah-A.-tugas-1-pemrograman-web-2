@@ -9,6 +9,12 @@
         </div>
         <div class="container mt-4">
             <h3 class="mb-3">Form Edit Data Divisi</h3>
+
+             @session('success')
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endsession
             <form action="{{ route('divisi.update' , $divisi->id) }}" method="POST">
             @csrf
             @method('PUT')

@@ -44,6 +44,7 @@
                             <th>Nomor Induk Anggota</th>
                             <th>Status Anggota</th>
                             <th>Nama Unix</th>
+                            <th>Divisi</th>
                             <th>Alamat</th>
                             <th>Nomor Telepon</th>
                             <th>Aksi</th>
@@ -57,8 +58,10 @@
                         <td>{{ $item->nia }}</td>
                         <td>{{ $item->status }}</td>
                         <td>{{ $item->nama_unix }}</td>
+                        <td>{{ $item->divisi->nama_divisi ?? '-' }}</td>
                         <td>{{ $item->alamat }}</td>
                         <td>{{ $item->no_telp }}</td>
+
                         <td>
                             <div class="d-flex justify-content-center gap-2">
                             <a href="{{ route('edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>

@@ -84,14 +84,14 @@ class DivisiController extends Controller
         $validate = $request->validate([
             'nama_divisi' => 'required|string|max:255',
             'deskripsi' => 'required|string|max:255',
-            'nama_ketua' => 'reqired|string|max:255',
+            'ketua_divisi' => 'required|string|max:255',
            
 
         ],
         [
             'nama_divisi.required' => 'Nama Divisi harus diisi.',
             'deskripsi.required' => 'Deskripsi harus diisi.',
-            'nama_ketua.required' => 'Nama Ketua harus diisi.',
+            'ketua_divisi.required' => 'Nama Ketua harus diisi.',
            
         
         ]);
@@ -108,6 +108,8 @@ class DivisiController extends Controller
      */
     public function destroy(Divisi $divisi)
     {
-        //
+        $divisi->delete($divisi);
+
+        return to_route('divisi.index')->withSuccess('Data Divisi berhasil di hapus!');
     }
 }
