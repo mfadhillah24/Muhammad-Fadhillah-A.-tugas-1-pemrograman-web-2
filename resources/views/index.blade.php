@@ -7,7 +7,7 @@
             <div class="col-12 text-center mt-4">
                 <img src="{{ asset('images/logo cos.png') }}" alt="" width="120" class="mb-4">
                 <h1>Data Keanggotaan Cyber Open Source</h1>
-                <p class="fst-italic">Open Mind for The Future with Open Source</p>
+                <p class="fst-italic">Open Your Mind for The Future with Open Source</p>
             </div> 
         </div>
         <hr class="my-3 border-2 border-dark opacity-75">
@@ -17,6 +17,15 @@
             </div>
             <div class="col-md-6 text-end">
                 <a href="{{ route('create') }}" class="btn btn-primary">+ Tambah Data</a>
+            </div>
+
+            <div class="col-md-4 mt-2">
+                <form action="" method="GET">
+                    <div class="input-group">
+                        <input type="text" name="keyword" class="form-control" placeholder="Cari Anggota..." value="{{ request('keyword') }}" id="">
+                        <button class="btn btn-secondary" type="submit">Search</button>
+                    </div>
+                </form>
             </div>
         </div>
         @session('success')
@@ -43,7 +52,7 @@
                         @foreach ($anggota as $item)
                     <tr class="text-center">
                         
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $anggota->firstItem() + $loop->index }}</td>
                         <td>{{ $item->nama }}</td>
                         <td>{{ $item->nia }}</td>
                         <td>{{ $item->status }}</td>
@@ -62,13 +71,20 @@
                         </td>    
                     </tr>
                         @endforeach
+                        
                     
                         
                 </table>
 
+                <div class="mt-3 d-flex justify-content-end">
+                    {{ $anggota->links() }}
+                </div>
+
+                
             
             </div>
         </div>
+        
 
                         
 </x-tampilan>

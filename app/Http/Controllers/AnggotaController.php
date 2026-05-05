@@ -5,22 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Anggota;
 use App\Models\Divisi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 class AnggotaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        return view('index' ,
-        [
-            'anggota' => Anggota::all(),
-            
+   public function index()
+{
+    $query = Anggota::latest();
+    $keyword = request('keyword');
 
-        ]);
+    if($keyword){
+        $query->where('nama', 'like', "%$keyword%")
+              ->orWhere('nia', 'like', "%$keyword%")
+              ->orWhere('status', 'like', "%$keyword%")
+              ->orWhere('nama_unix', 'like', "%$keyword%")
+              ->orWhere('alamat', 'like', "%$keyword%")
+              ->orWhere('no_telp', 'like', "%$keyword%");
 
     }
+    return view('index', [
+        'anggota' => $query->paginate(5)->withQueryString(),
+    ]);
+}
 
     /**
      * Show the form for creating a new resource.
