@@ -67,7 +67,13 @@ class DivisiController extends Controller
      */
     public function edit(Divisi $divisi)
     {
-        
+        return view('divisi.edit',
+        [
+            'divisi' => $divisi,
+            'divisis' => Divisi::all(),
+
+            
+        ]);
     }
 
     /**
@@ -75,8 +81,27 @@ class DivisiController extends Controller
      */
     public function update(Request $request, Divisi $divisi)
     {
-        //
+        $validate = $request->validate([
+            'nama_divisi' => 'required|string|max:255',
+            'deskripsi' => 'required|string|max:255',
+            'nama_ketua' => 'reqired|string|max:255',
+           
+
+        ],
+        [
+            'nama_divisi.required' => 'Nama Divisi harus diisi.',
+            'deskripsi.required' => 'Deskripsi harus diisi.',
+            'nama_ketua.required' => 'Nama Ketua harus diisi.',
+           
+        
+        ]);
+
+        $divisi->update($validate);
+
+        return to_route('divisi.index')->withSuccess('Data divisi berhasil di edit!');
+    
     }
+    
 
     /**
      * Remove the specified resource from storage.
