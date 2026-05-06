@@ -65,6 +65,7 @@
                         <td>
                             <div class="d-flex justify-content-center gap-2">
                             <a href="{{ route('edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                           
                             
                             <form action="{{ route('delete', $item->id) }}" method="POST">
                                 @csrf

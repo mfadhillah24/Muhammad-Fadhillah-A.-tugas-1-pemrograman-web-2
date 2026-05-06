@@ -109,6 +109,7 @@ class AnggotaController extends Controller
             'nama_unix' => 'required|string|max:50',
             'alamat' => 'required|string|max:255',
             'no_telp' => 'required|string|max:20',
+            'divisi_id' => 'required|exists:divisis,id',
 
         ],
         [
@@ -120,6 +121,7 @@ class AnggotaController extends Controller
             'no_telp.required' => 'Nomor Telepon harus diisi.',
             'no_telp.numeric' => 'Nomor Telepon harus berupa angka.',
             'no_telp.max' => 'Nomor Telepon tidak boleh lebih dari 20 karakter.',
+            'divisi_id.required' => 'Divisi harus dipilih.',
         
         ]);
 

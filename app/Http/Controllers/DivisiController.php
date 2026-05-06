@@ -59,7 +59,9 @@ class DivisiController extends Controller
      */
     public function show(Divisi $divisi)
     {
-        //
+        return view('divisi.show', [
+            'divisi' => $divisi->load('anggotas'),
+        ]);
     }
 
     /**

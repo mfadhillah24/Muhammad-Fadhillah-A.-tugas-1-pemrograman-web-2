@@ -31,6 +31,7 @@
                         <td>
                             <div class="d-flex justify-content-center gap-2">
                             <a href="{{ route('divisi.edit', $divisi->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{{ route('divisi.show', $divisi->id) }}" class="btn btn-sm btn-info">Details</a>
                             
                             <form action="{{ route('divisi.destroy', $divisi->id) }}" method="POST">
                                 @csrf
