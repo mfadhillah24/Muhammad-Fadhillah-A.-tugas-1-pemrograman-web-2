@@ -19,14 +19,38 @@
                 <a href="{{ route('create') }}" class="btn btn-primary">+ Tambah Data</a>
             </div>
 
-            <div class="col-md-4 mt-2">
-                <form action="" method="GET">
-                    <div class="input-group">
-                        <input type="text" name="keyword" class="form-control" placeholder="Cari Anggota..." value="{{ request('keyword') }}" id="">
-                        <button class="btn btn-secondary" type="submit">Search</button>
-                    </div>
-                </form>
+            <div class="col-md-8 mt-2">
+    <form action="" method="GET">
+        <div class="row g-2 align-items-center">
+
+            
+            <div class="col-md-5">
+                <input type="text" name="keyword" class="form-control" placeholder="Cari Anggota..." value="{{ request('keyword') }}">
             </div>
+
+            
+            <div class="col-md-4">
+                <select name="divisi_id" class="form-select">
+                    <option value="">Semua Divisi</option>
+                    @foreach($divisis as $divisi)
+                        <option value="{{ $divisi->id }}" 
+                            {{ request('divisi_id') == $divisi->id ? 'selected' : '' }}>
+                            {{ $divisi->nama_divisi }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+           
+            <div class="col-md-3 d-flex gap-2">
+                <button type="submit" class="btn btn-secondary w-100">
+                    Filter
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>
         </div>
         @session('success')
     <div class="alert alert-success">

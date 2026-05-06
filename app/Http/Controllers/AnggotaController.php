@@ -17,6 +17,7 @@ class AnggotaController extends Controller
 {
     $query = Anggota::latest();
     $keyword = request('keyword');
+    $divisi_id = request('divisi_id');
 
     if($keyword){
         $query->where('nama', 'like', "%$keyword%")
@@ -25,10 +26,16 @@ class AnggotaController extends Controller
               ->orWhere('nama_unix', 'like', "%$keyword%")
               ->orWhere('alamat', 'like', "%$keyword%")
               ->orWhere('no_telp', 'like', "%$keyword%");
-
     }
+
+    if($divisi_id){
+                $query->where('divisi_id', $divisi_id);
+              }
+
+
     return view('index', [
         'anggota' => $query->paginate(5)->withQueryString(),
+        'divisis' => Divisi::all(), 
     ]);
 }
 
