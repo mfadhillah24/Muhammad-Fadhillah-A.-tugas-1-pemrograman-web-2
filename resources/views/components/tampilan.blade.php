@@ -21,6 +21,7 @@
       <div class="navbar-nav">
         <a class="nav-link active" href="{{ route('index') }}">Anggota</a>
         <a class="nav-link" href="{{ route('divisi.index') }}">Divisi</a>
+        <a class="nav-link" href="{{ route('anggota.trash') }}">Trash</a>
         
       </div>
     </div>

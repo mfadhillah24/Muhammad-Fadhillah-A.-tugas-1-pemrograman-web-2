@@ -166,8 +166,18 @@ class AnggotaController extends Controller
      */
     public function destroy(Anggota $anggota)
     {
-        $anggota->delete($anggota);
+        $anggota->delete();
 
         return to_route('index')->withSuccess('Data anggota berhasil di hapus!');
     }
+
+    // SOFT DELETES
+    public function trash()
+
+    {
+        return view('trash', [
+            'anggotas' => Anggota::onlyTrashed()->latest()->paginate(5),
+        ]);
+    }
+        
 }
