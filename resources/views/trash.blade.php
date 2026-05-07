@@ -50,6 +50,12 @@
                                     
 
                                 </form>
+
+                                <form action="{{ route('anggota.force-delete', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini secara permanen?')">Delete</button>
+                                </form> 
                     </div>
                         </td>    
                     </tr>

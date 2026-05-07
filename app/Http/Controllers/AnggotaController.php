@@ -180,12 +180,20 @@ class AnggotaController extends Controller
         ]);
     }
 
+    // RESTORE
     public function restore(Anggota $anggota)
     {
         $anggota->restore();
     
 
         return redirect()->route('anggota.trash')->withSuccess('Data anggota berhasil dikembalikan!');
+    }
+
+    public function forceDelete(Anggota $anggota)
+    {
+        $anggota->forceDelete();
+
+        return redirect()->route('anggota.trash')->withSuccess('Data anggota berhasil dihapus permanen!');
     }
         
 }

@@ -18,3 +18,5 @@ Route::get('/show-anggota/{anggota}', [AnggotaController::class, 'show'])->name(
 Route::get('/trash', [AnggotaController::class, 'trash'])->name('anggota.trash');
 // RESTORE
 Route::put('/restore/{anggota}/restore', [AnggotaController::class, 'restore'])->name('anggota.restore')->withTrashed();
+// FORCE DELETE
+Route::delete('/force-delete/{anggota}/force-delete', [AnggotaController::class, 'forceDelete'])->name('anggota.force-delete')->withTrashed();
