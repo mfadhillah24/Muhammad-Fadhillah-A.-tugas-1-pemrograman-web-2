@@ -132,7 +132,6 @@ class AnggotaController extends Controller
             'no_telp' => 'required|string|max:20',
             'divisi_id' => 'required|exists:divisis,id',
             'email' => 'nullable|email|max:255',
-
         ],
         [
             'nama.required' => 'Nama anggota harus diisi.',
@@ -145,12 +144,20 @@ class AnggotaController extends Controller
             'no_telp.max' => 'Nomor Telepon tidak boleh lebih dari 20 karakter.',
             'divisi_id.required' => 'Divisi harus dipilih.',
             'email.email' => 'Format email tidak valid.',
-        
         ]);
 
-        $anggota->update($validate);
+        try{
 
-        return to_route('index')->withSuccess('Data anggota berhasil di edit!');
+        DB::beginTransaction();
+        $anggota->update($validate);
+        DB::commit();
+        return redirect()->route('index')->withSuccess('Data anggota berhasil di edit!');
+
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->route('edit', $anggota)->withError('Terjadi kesalahan saat menyimpan data anggota Harap coba lagi!');
+
+        }
     
     }
 
