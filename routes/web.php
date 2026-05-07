@@ -11,4 +11,8 @@ Route::get('/edit/{anggota}', [AnggotaController::class, 'edit'])->name('edit');
 Route::put('/update/{anggota}', [AnggotaController::class, 'update'])->name('update');
 Route::delete('/delete/{anggota}', [AnggotaController::class, 'destroy'])->name('delete');
 Route::resource('divisi', DivisiController::class);
-Route::get('/show/{divisi}', [DivisiController::class, 'show'])->name('show');
+Route::get('/show/{divisi}', [DivisiController::class, 'show'])
+    ->name('divisi.show');
+
+Route::get('/show-anggota/{anggota}', [AnggotaController::class, 'show'])
+    ->name('anggota.show');

@@ -1,18 +1,14 @@
 <x-tampilan>
-    <x-slot:title>Detail Data Anggota COS</x-slot>
+    <x-slot:title>Detail Data Divisi COS</x-slot>
     
     <div class="container mt-4">
         <div class="row">
             <div class="col-12 text-center mb-4">
                 <img src="{{ asset('images/logo cos.png') }}" alt="" width="120" class="mb-3">
-                <h1>Detail Data Anggota Cyber Open Source</h1>
+                <h1>Detail Data Divisi Cyber Open Source</h1>
                 <p class="fst-italic">Open Mind for The Future with Open Source</p>
             </div>
         </div>
-
-        
-       
-
                 <ul class="list-group">
                     <li class="list-group-item">Nama Divisi : {{ $divisi->nama_divisi }}</li>
                     <li class="list-group-item">Deskripsi : {{ $divisi->deskripsi }}</li>

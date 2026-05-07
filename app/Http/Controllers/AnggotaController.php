@@ -87,7 +87,9 @@ class AnggotaController extends Controller
      */
     public function show(Anggota $anggota)
     {
-        //
+        return view('show', [
+            'anggota' => $anggota->load('divisi'),
+        ]);
     }
 
     /**
