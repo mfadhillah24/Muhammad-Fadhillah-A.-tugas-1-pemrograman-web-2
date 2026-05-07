@@ -16,7 +16,8 @@
                     <li class="list-group-item">Nama Unix : {{ $anggota->nama_unix }}</li>
                     <li class="list-group-item">Divisi : {{ $anggota->divisi->nama_divisi }}</li>
                     <li class="list-group-item">Alamat : {{ $anggota->alamat }}</li>    
-                    <li class="list-group-item">Nomor Telepon : {{ $anggota->no_telp }}</li>    
+                    <li class="list-group-item">Nomor Telepon : {{ $anggota->no_telp }}</li>
+                    <li class="list-group-item">Email : {{ $anggota->email ?? '-' }}</li>    
                      <li class="list-group-item">Diterima sebagai Anggota COS pada tanggal : {{ $anggota->created_at->format('d F Y H:i:s')}} ({{$anggota->created_at->diffForHumans() }})</li>    
                     <li class="list-group-item">Terakhir di Update pada tanggal : {{ $anggota->updated_at->format('d F Y H:i:s')}} ({{$anggota->updated_at->diffForHumans() }})</li>
                    

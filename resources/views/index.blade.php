@@ -3,7 +3,7 @@
     
 
     <div class="container">
-        <div class="row">
+        <div class="row mb-3">
             <div class="col-12 text-center mt-4">
                 <img src="{{ asset('images/logo cos.png') }}" alt="" width="120" class="mb-4">
                 <h1>Data Keanggotaan Cyber Open Source</h1>
@@ -71,6 +71,7 @@
                             <th>Divisi</th>
                             <th>Alamat</th>
                             <th>Nomor Telepon</th>
+                            <th>Email</th>
                             <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -85,6 +86,7 @@
                         <td>{{ $item->divisi->nama_divisi ?? '-' }}</td>
                         <td>{{ $item->alamat }}</td>
                         <td>{{ $item->no_telp }}</td>
+                        <td>{{ $item->email ?? '-' }}</td>
 
                         <td>
                             <div class="d-flex justify-content-center gap-2">

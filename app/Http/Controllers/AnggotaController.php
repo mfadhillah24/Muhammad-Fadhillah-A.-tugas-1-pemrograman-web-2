@@ -62,6 +62,7 @@ class AnggotaController extends Controller
             'alamat' => 'required|string|max:255',
             'no_telp' => 'required|string|max:20',
             'divisi_id' => 'required|exists:divisis,id',
+            'email' => 'nullable|email|max:255',
         ],
         [
             'nama.required' => 'Nama anggota harus diisi.',
@@ -73,6 +74,7 @@ class AnggotaController extends Controller
             'no_telp.numeric' => 'Nomor Telepon harus berupa angka.',
             'no_telp.max' => 'Nomor Telepon tidak boleh lebih dari 20 karakter.',
             'divisi_id.required' => 'Divisi harus dipilih.',
+            'email.email' => 'Format email tidak valid.',
         ]);
 
         Anggota::create($validate);
@@ -119,6 +121,7 @@ class AnggotaController extends Controller
             'alamat' => 'required|string|max:255',
             'no_telp' => 'required|string|max:20',
             'divisi_id' => 'required|exists:divisis,id',
+            'email' => 'nullable|email|max:255',
 
         ],
         [
@@ -131,6 +134,7 @@ class AnggotaController extends Controller
             'no_telp.numeric' => 'Nomor Telepon harus berupa angka.',
             'no_telp.max' => 'Nomor Telepon tidak boleh lebih dari 20 karakter.',
             'divisi_id.required' => 'Divisi harus dipilih.',
+            'email.email' => 'Format email tidak valid.',
         
         ]);
 
