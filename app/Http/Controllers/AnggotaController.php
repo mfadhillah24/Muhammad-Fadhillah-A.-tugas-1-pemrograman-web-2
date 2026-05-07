@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Anggota;
 use App\Models\Divisi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -77,10 +78,19 @@ class AnggotaController extends Controller
             'email.email' => 'Format email tidak valid.',
         ]);
 
-        Anggota::create($validate);
+        try{
 
-        
+        DB::beginTransaction();
+        Anggota::create($validate);
+        DB::commit();
         return redirect()->route('index')->withSuccess('Data anggota berhasil disimpan!');
+
+        }catch(\Exception $e){
+            DB::rollBack();
+            return redirect()->route('create')->withError('Terjadi kesalahan saat menyimpan data anggota Harap coba lagi!');
+
+        }
+        
     
     }
 
