@@ -16,3 +16,5 @@ Route::get('/show-anggota/{anggota}', [AnggotaController::class, 'show'])->name(
 
 // SOFT DELETES
 Route::get('/trash', [AnggotaController::class, 'trash'])->name('anggota.trash');
+// RESTORE
+Route::put('/restore/{anggota}/restore', [AnggotaController::class, 'restore'])->name('anggota.restore')->withTrashed();

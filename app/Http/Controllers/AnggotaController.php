@@ -179,5 +179,13 @@ class AnggotaController extends Controller
             'anggotas' => Anggota::onlyTrashed()->latest()->paginate(5),
         ]);
     }
+
+    public function restore(Anggota $anggota)
+    {
+        $anggota->restore();
+    
+
+        return redirect()->route('anggota.trash')->withSuccess('Data anggota berhasil dikembalikan!');
+    }
         
 }

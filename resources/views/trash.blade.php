@@ -41,9 +41,15 @@
                         <td>{{ $item->alamat }}</td>
                         <td>{{ $item->no_telp }}</td>
                         <td>{{ $item->email ?? '-' }}</td>
-
                         <td>
                             <div class="d-flex justify-content-center gap-2">
+                                <form action="{{ route('anggota.restore', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Apakah anda yakin ingin mengmbalikan data ini?')">Restore</button>
+                                    
+
+                                </form>
                     </div>
                         </td>    
                     </tr>
